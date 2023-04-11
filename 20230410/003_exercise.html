@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .square {
+            width: 500px;
+            height: 500px;
+            background-color: black;
+        }
+
+        .square.red {
+            background-color: red;
+        }
+
+        .square.yellow {
+            background-color: yellow;
+        }
+
+        .square.green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="square"></div>
+
+    <ul class="color">
+        <li><button type="button" class="red">빨강</button></li>
+        <li><button type="button" class="yellow">노랑</button></li>
+        <li><button type="button" class="green">초록</button></li>
+    </ul>
+
+    <script>
+        const square = document.querySelector(".square");
+        const btns = document.querySelectorAll("button");
+
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener('click', function () {
+                square.classList.remove('yellow', 'red', 'green');
+                square.classList.toggle(btns[i].className);
+            })
+
+        }
+
+
+    </script>
+</body>
+
+</html>
