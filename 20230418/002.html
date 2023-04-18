@@ -184,17 +184,24 @@
 
         // option 선택
         const handleSelect = function (e) {
+            // 자신 (노드 / 엘리먼트 / 태그명) 알아내기 - 기준태그.nodeName
             if (e.target.nodeName === "BUTTON") {
+                // 이벤트 타겟("BUTTON")의 텍스트를 btn.innerText에 저장한다.
                 btn.innerText = e.target.innerText;
+                // focus를 취소하기 위해 btn의 toggle "on"을 삭제한다.
                 btn.classList.remove("on");
+                // setTimeout은 타이머가 만료된 뒤 실행한다.
+                // focus를 자연스럽게 옮기기 위해 0.1초가 지나고 실행한다.
                 window.setTimeout(function () {
                     btn.focus();
                 }, 100);
+                // 이벤트 타겟을 선택된 옵션에 넣어준다.
                 selectOption = e.target;
             }
         };
 
         // select 닫기
+        // focus를 지운다.
         const handleClose = function () {
             btn.classList.remove("on");
             window.setTimeout(function () {

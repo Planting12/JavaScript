@@ -18,7 +18,9 @@
         const submit = document.querySelector('.submit');
         submit.addEventListener('click', (event) => {
             console.log('clicked');
+            // submit은 값을 전송하면 새로고침하는 기능을 지녀 preventDefault()로 동작을 중단시켜야 한다.
             event.preventDefault();
+            // stopPropagation()는 이벤트 전파를 막아 부모 객체의 이벤트가 실행되지 않게 한다.
             event.stopPropagation();
         });
 
