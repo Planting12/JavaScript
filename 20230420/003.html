@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <script>
+        function PersonGenrator() {
+            let age = 25;
+
+            //function PersonGenrator() 대신 생성자 함수 할 수 있는 녀석을 안에 만든다.
+            function InnerPersonType() { };
+
+            InnerPersonType.prototype.getAge = function () {
+                return age;
+            }
+
+            return InnerPersonType;
+        }
+
+        const Person = PersonGenrator();
+        const myPerson = new Person();
+
+        const PersonGenerator2 = (function () {
+            let age = 25;
+
+            function InnerPersonType() { };
+
+            InnerPersonType.prototype.getAge = function () {
+                return age;
+            }
+
+            return InnerPersonType;
+        })();
+
+        const myPerson2 = new PersonGenerator2();
+    </script>
+</body>
+
+</html>

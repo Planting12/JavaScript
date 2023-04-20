@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooking Sausage</title>
+</head>
+
+<body>
+    <script>
+        class Sausage {
+            constructor(beef, greenOnion) {
+                this.beef = beef;
+                this.greenOnion = greenOnion;
+            }
+            taste() {
+                console.log(`${this.beef}맛과 ${this.greenOnion}맛이 나는 소세지다!`);
+            }
+        }
+
+
+
+        class FiresSausage extends Sausage {
+            constructor(beef, greenOnion, fire) {
+                super(beef, greenOnion);
+                this.fire = fire;
+            }
+
+            taste() {
+                console.log(`${this.beef}맛과 ${this.greenOnion}맛, 그리고 ${this.fire}맛이 나는 소세지다!`)
+            }
+        }
+
+        const amazingSausage = new amazingSausage('소고기', '파', '불');
+    </script>
+</body>
+
+</html>
