@@ -1,43 +1,23 @@
 var express = require("express");
 var router = express.Router();
+const loginCheck = require("../module/loginCheck");
+const upload = require("../module/imageUpload");
 
-let arr = [];
-
-router.get("/read", (req, res) => {
+router.get("/", loginCheck, (req, res) => {
   res.status(200).json({
-    message: "read success",
+    message: "login success!",
   });
 });
 
-router.post("/create", (req, res) => {
-  const data = req.body.data;
-  // data의 키값과 함수명이 동일할 경우,
-  // 비구조화 할당을 통해 바로 할당이 가능하다.
-  // const { data } = req.body; 로 쓸 수 있다.
-  arr.push(data);
+router.post("/upload", upload.single("image"), (req, res) => {
+  const file = req.file;
+  console.log(file);
   res.status(200).json({
-    message: "create success",
-    result: arr,
+    message: "upload success!",
   });
 });
-
-router.put("/update/:id", (req, res) => {
-  const { id } = req.params;
-  const { data } = req.body;
-  arr[id] = data;
-  res.status(200).json({
-    message: "update success",
-    result: arr,
-  });
-});
-
-router.delete("/delete/:id", (req, res) => {
-  const { id } = req.params;
-  arr.splice(id, 1);
-  res.status(200).json({
-    message: "delete success",
-    result: arr,
-  });
-});
+// upload 라우터로 image 데이터를 보냈을 때
+// middleware를 통해서 image가 저장되고
+// 잘 저장되었는지 확인 후, 응답해주는 코드.
 
 module.exports = router;

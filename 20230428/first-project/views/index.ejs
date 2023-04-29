@@ -2,18 +2,17 @@
 <html>
 
 <head>
-  <title>
-    <%= title %>
-  </title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
 <body>
-  <h1>
-    <%= title %>
-  </h1>
-  <p>Hello first project <%= title %>
-  </p>
+  <% if(username) { %>
+    <div>
+      <%= username %>님 환영합니다
+    </div>
+    <% } else { %>
+      <div>로그인이 필요합니다</div>
+      <% } %>
 </body>
 
 </html>
