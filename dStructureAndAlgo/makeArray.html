@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko-KR">
+<html lang="ko">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>자료구조와 알고리즘</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 
 <body>
@@ -17,19 +17,20 @@
             }
 
             push(item) {
-                // 유사배열객체
-                // {0:item, 1:item ..} 식으로 푸시됨
-                this.data[this.length] = item;
-                this.length++;
+                // obj[1] = 'hello'; 
+                this.data[this.length] = item; // {0:item, 1:item, 2:item}
+                this.length += 1; //++
                 return this.length;
             }
+
             pop() {
                 const lastState = this.data[this.length - 1];
                 delete this.data[this.length - 1];
-                this.length--;
+                this.length -= 1; //--
                 return lastState;
             }
 
+            // 인덱스 숫자로 속성을 제거합니다.
             deleteWithIndex(index) {
                 const removedItem = this.data[index];
                 // delete this.data[index];
@@ -37,61 +38,30 @@
                 return removedItem;
             }
 
-            //인덱스를 정리하고 속성을 제거합니다.
+            // 인덱스를 정리하고 속성을 제거합니다.
             changeOrderOfItems(index) {
-                if (index < this.length) {
-                    this.length--;
-                    for (let i = index; i < this.length; i++) {
-                        this.data[i] = this.data[i + 1];
-                    }
-                    delete this.data[this.length];
-
-                } else {
-                    throw new Error('해당 인덱스의 값은 없습니다')
+                // 받아오는 인덱스부터 시작해 정리를 해봅니다.
+                // 3
+                // 길이를 하나 줄입니다.
+                this.length--;
+                for (let i = index; i < this.length; i++) {
+                    // 뒤에 있는 인덱스를 앞으로 당겨야합니다.
+                    // [0,1,2] ==> [0, 2]
+                    this.data[i] = this.data[i + 1];
                 }
+                // 대상을 제거합니다.
+                delete this.data[this.length];
             }
         }
 
-        //내가 한 시도
-        const arr = new UltraArray();
-        arr.push(1);
-        arr.push(2);
-        arr.push(10);
-        console.log(arr.data);
+        const myArray = new UltraArray();
 
-        console.log(arr.pop());
-        console.log(arr.data);
+        myArray.push(1);
+        myArray.push(2);
+        myArray.push(3);
+        myArray.push(4);
+        myArray.push(5);
 
-        arr.push(10);
-        console.log(arr.deleteWithIndex(1));
-        console.log(arr.data);
-
-
-        class MyUltraArray {
-            constructor() {
-                this.arr = [];
-            }
-
-            push(a) {
-                this.arr = [...this.arr, a];
-            }
-            pop() {
-                const pop = this.arr[this.arr.length - 1];
-                this.arr = this.arr.slice(0, -1);
-                return pop;
-            }
-        }
-
-        /*
-        const myArr = new MyUltraArray();
-        myArr.push(1);
-        myArr.push(2);
-        myArr.push(10);
-        console.log(myArr);
-        console.log(myArr.arr);
-        console.log(myArr.pop());
-        console.log(myArr.arr);
-        */
     </script>
 </body>
 

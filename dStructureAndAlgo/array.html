@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html lang="ko-KR">
+<html lang="ko">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>자료구조와 알고리즘</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 
 <body>
     <script>
-        const arr = [1, 2, 3, 4]
-        arr.push(5); // O(1) 상수시간
+        const testArray = [1, 2, 3, 4];
+        testArray.push(5); // O(1)
 
-        arr.pop(); // O(1) (마지막 원소 빼기)
+        testArray.pop(); // O(1)
 
-        arr.unshift(0) //O(n) 선형시간 (맨앞 원소 추가-다른 원소들 인덱스가 밀린다)
+        testArray.unshift(0); // O(n)
 
-        // arr.splice(잘라내기시작할 인덱스,잘라낼 개수,추가할 원소들)
-        arr.splice(2, 1, 6); // O(1) ~ O(n) (평균과 최악의 상황)
+        testArray.splice(2, 1, 6); // O(1) ~ O(n)
+
+
 
     </script>
 </body>
